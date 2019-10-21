@@ -8,11 +8,103 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView : View {
+    
+   @State private var firstName: String = ""
+   @State var lastName: String = ""
+   @State var personEmail: String = ""
+   @State var address: String = ""
+   @State var phoneNumber: String = ""
+   @State var city: String = ""
+   @State var municipality: String = ""
+   @State var dateOfBirth: String = ""
+   @State var gender: String = ""
+  
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            Form {
+                Section {
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("First name")
+                               .font(.footnote)
+                            TextField("Enter the first name", text: $firstName)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("Last name")
+                               .font(.footnote)
+                            TextField("Enter the last name", text: $lastName)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("eMail")
+                               .font(.footnote)
+                            TextField("Enter the email address", text: $personEmail)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("Address")
+                               .font(.footnote)
+                            TextField("Enter the address", text: $address)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("Phone Number")
+                               .font(.footnote)
+                            TextField("Enter the phone number", text: $phoneNumber)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("city")
+                               .font(.footnote)
+                            TextField("Enter the city", text: $city)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("Municipality")
+                               .font(.footnote)
+                            TextField("Enter the municipality", text: $municipality)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("Date of birth")
+                               .font(.footnote)
+                            TextField("Enter the dateOfBirth", text: $dateOfBirth)
+                        }
+                    }
+                    
+                    ZStack {
+                        VStack (alignment: .leading) {
+                            Text("Gender")
+                               .font(.footnote)
+                            TextField("Enter the gender", text: $gender)
+                        }
+                    }
+                    
+                }
+            }
+                
+             
+            .navigationBarTitle(Text("Person opplysninger"))
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
