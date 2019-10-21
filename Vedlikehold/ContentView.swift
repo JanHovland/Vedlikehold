@@ -100,7 +100,8 @@ struct ContentView : View {
             }
                 
              
-            .navigationBarTitle(Text("Person opplysninger"))
+            .navigationBarTitle(Text("Person opplysninger"), displayMode: .inline)
+            
         }
     }
 }
