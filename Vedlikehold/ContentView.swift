@@ -22,12 +22,12 @@ struct ContentView : View {
   
     var body: some View {
         NavigationView {
-            List {
+            Form {
                     ZStack {
                         VStack (alignment: .leading) {
                             Text("First name")
                                .font(.footnote)
-                               .padding(-5)
+                               .padding(-3)
                             TextField("Enter the first name", text: $firstName)
                         }
                     }
@@ -109,6 +109,7 @@ struct ContentView : View {
                 
              
             .navigationBarTitle(Text("Person opplysninger"), displayMode: .inline)
+            .padding(-5)
             
         }
     }
