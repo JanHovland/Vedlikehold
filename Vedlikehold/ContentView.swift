@@ -10,16 +10,18 @@ import SwiftUI
 
 struct ContentView : View {
     
-   @State private var firstName: String = ""
-   @State var lastName: String = ""
-   @State var personEmail: String = ""
-   @State var address: String = ""
-   @State var phoneNumber: String = ""
-   @State var city: String = ""
-   @State var municipality: String = ""
-   @State var dateOfBirth: String = ""
-   @State var gender: String = ""
-  
+    @State private var firstName: String = ""
+    @State var lastName: String = ""
+    @State var personEmail: String = ""
+    @State var address: String = ""
+    @State var phoneNumber: String = ""
+    @State var city: String = ""
+    @State var municipality: String = ""
+    @State var dateOfBirth: String = ""
+    
+    @State private var gender = 0
+    var genders = ["Man", "Women"]
+
     var body: some View {
         NavigationView {
             Form {
@@ -95,16 +97,22 @@ struct ContentView : View {
                             TextField("Enter the dateOfBirth", text: $dateOfBirth)
                         }
                     }
-                    
-                    ZStack {
-                        VStack (alignment: .leading) {
+                
+                    VStack {
+                        HStack {
                             Text("Gender")
-                               .font(.footnote)
-                               .padding(-5)
-                            TextField("Enter the gender", text: $gender)
+                            .font(.footnote)
+                            .padding(-5)
+                            Picker(selection: $gender, label: Text("")) {
+                                ForEach(0..<genders.count) { index in
+                                    Text(self.genders[index]).tag(index)
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding(5)
                         }
-                    }
                     
+                    }
             }
                 
              
