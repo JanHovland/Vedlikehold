@@ -22,12 +22,12 @@ struct ContentView : View {
   
     var body: some View {
         NavigationView {
-            Form {
-                Section {
+            List {
                     ZStack {
                         VStack (alignment: .leading) {
                             Text("First name")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the first name", text: $firstName)
                         }
                     }
@@ -36,6 +36,7 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("Last name")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the last name", text: $lastName)
                         }
                     }
@@ -44,6 +45,7 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("eMail")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the email address", text: $personEmail)
                         }
                     }
@@ -52,6 +54,7 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("Address")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the address", text: $address)
                         }
                     }
@@ -60,6 +63,7 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("Phone Number")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the phone number", text: $phoneNumber)
                         }
                     }
@@ -68,15 +72,18 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("city")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the city", text: $city)
-                        }
+                                                   }
                     }
                     
                     ZStack {
                         VStack (alignment: .leading) {
                             Text("Municipality")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the municipality", text: $municipality)
+                            .fixedSize()
                         }
                     }
                     
@@ -84,6 +91,7 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("Date of birth")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the dateOfBirth", text: $dateOfBirth)
                         }
                     }
@@ -92,11 +100,11 @@ struct ContentView : View {
                         VStack (alignment: .leading) {
                             Text("Gender")
                                .font(.footnote)
+                               .padding(-5)
                             TextField("Enter the gender", text: $gender)
                         }
                     }
                     
-                }
             }
                 
              
