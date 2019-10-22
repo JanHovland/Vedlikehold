@@ -72,7 +72,7 @@ struct ContentView : View {
                     
                     ZStack {
                         VStack (alignment: .leading) {
-                            Text("city")
+                            Text("City")
                                .font(.footnote)
                                .padding(-5)
                             TextField("Enter the city", text: $city)
