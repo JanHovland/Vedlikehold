@@ -38,9 +38,9 @@ struct ContentView : View {
                     Image(systemName: "magnifyingglass")
                       .foregroundColor(.blue)
                         // .font(Font.system(.title).bold())
-                        .font(Font.system(.title))
-                        
-                    
+                        // .font(Font.system(.headline))
+                        // .font(Font.system(.title))
+                        .font(.title)
                 }
                 
                 InputDate(heading: "Date of birth", placeHolder: "Enter the dateOfBirth", value: $dateOfBirth)
