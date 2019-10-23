@@ -132,7 +132,6 @@ struct ContentView : View {
         }
         // Removes all separators below in the List view
         .listStyle(GroupedListStyle())
-         
     }
 }
 
