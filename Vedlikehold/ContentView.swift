@@ -19,7 +19,7 @@ struct ContentView : View {
     @State var municipality: String = ""
     @State var dateOfBirth: String = ""
     
-    @State private var gender = 0
+    @State var gender = 0
     var genders = ["Man", "Women"]
 
     var body: some View {
@@ -31,33 +31,19 @@ struct ContentView : View {
                 InputTextField(heading: "eMail",        placeHolder: "Enter the email address", value: $personEmail)
                 InputTextField(heading: "Address",      placeHolder: "Enter the address",       value: $address)
                 InputTextField(heading: "Phone Number", placeHolder: "Enter the phone number",  value: $phoneNumber)
-                InputTextField(heading: "City",         placeHolder: "Enter the city",          value: $city)
-                InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
-
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("Date of birth")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the dateOfBirth", text: $dateOfBirth)
-                        .padding(-7)
-                        .padding(.horizontal, 15)
-                    }
+                
+                HStack {
+                    InputTextField(heading: "City",         placeHolder: "Enter the city",          value: $city)
+                    InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.blue)
                 }
-            
-                VStack {
-                    HStack {
-                        Text("Gender ")
-                        .font(.footnote)
-                        .padding(-5)
-                        Picker(selection: $gender, label: Text("")) {
-                            ForEach(0..<genders.count) { index in
-                                Text(self.genders[index]).tag(index)
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                    }
-                }
+                
+                InputDate(heading: "Date of birth", placeHolder: "Enter the dateOfBirth", value: $dateOfBirth)
+              
+                // Returning an inteher 0 == "Man" 1 == "Women
+                InputGender(heading: "Gender ", genders: genders, value: $gender)
+                
             }
             .navigationBarTitle(Text("Personal information"), displayMode: .inline)
         }
@@ -90,4 +76,46 @@ struct InputTextField: View {
           }
        }
     }
+}
+
+struct InputDate: View {
+   var heading: String
+   var placeHolder: String
+   @Binding var value: String
+
+   var body: some View {
+      ZStack {
+          VStack (alignment: .leading) {
+              Text(heading)
+                 .font(.footnote)
+                 .padding(-5)
+              TextField(placeHolder, text: $value)
+              .padding(-7)
+              .padding(.horizontal, 15)
+              .keyboardType(.numbersAndPunctuation)
+          }
+      }
+   }
+}
+
+struct InputGender: View {
+   var heading: String
+   var genders: [String]
+   @Binding var value: Int
+
+   var body: some View {
+      VStack {
+          HStack {
+              Text(heading)
+              .font(.footnote)
+              .padding(-5)
+              Picker(selection: $value, label: Text("")) {
+                  ForEach(0..<genders.count) { index in
+                      Text(self.genders[index]).tag(index)
+                  }
+              }
+              .pickerStyle(SegmentedPickerStyle())
+          }
+      }
+   }
 }
