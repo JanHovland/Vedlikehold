@@ -36,7 +36,11 @@ struct ContentView : View {
                     InputTextField(heading: "City",         placeHolder: "Enter the city",          value: $city)
                     InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(.blue)
+                      .foregroundColor(.blue)
+                        // .font(Font.system(.title).bold())
+                        .font(Font.system(.title))
+                        
+                    
                 }
                 
                 InputDate(heading: "Date of birth", placeHolder: "Enter the dateOfBirth", value: $dateOfBirth)
