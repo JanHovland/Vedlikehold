@@ -128,7 +128,7 @@ struct ContentView : View {
                     }
                 }
             }
-            .navigationBarTitle(Text("Person opplysninger"), displayMode: .inline)
+            .navigationBarTitle(Text("Personal information"), displayMode: .inline)
         }
         // Removes all separators below in the List view
         .listStyle(GroupedListStyle())
