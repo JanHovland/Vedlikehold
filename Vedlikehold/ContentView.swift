@@ -25,84 +25,15 @@ struct ContentView : View {
     var body: some View {
         NavigationView {
             List {
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("First name")
-                           .font(.footnote)
-                           .padding(-3)
-                        TextField("Enter the first name", text: $firstName)
-                            .padding(-7)
-                            .padding(.horizontal, 15)
-                    }
-                }
                 
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("Last name")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the last name", text: $lastName)
-                        .padding(-7)
-                        .padding(.horizontal, 15)
-                    }
-                }
-                                   
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("eMail")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the email address", text: $personEmail)
-                           .padding(-7)
-                           .padding(.horizontal, 15)
-                    }
-                }
-                
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("Address")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the address", text: $address)
-                        .padding(-7)
-                        .padding(.horizontal, 15)
-                    }
-                }
-                
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("Phone Number")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the phone number", text: $phoneNumber)
-                        .padding(-7)
-                        .padding(.horizontal, 15)
-                    }
-                }
-                
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("City")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the city", text: $city)
-                        .padding(-7)
-                        .padding(.horizontal, 15)
-                    }
-                }
-                
-                ZStack {
-                    VStack (alignment: .leading) {
-                        Text("Municipality")
-                           .font(.footnote)
-                           .padding(-5)
-                        TextField("Enter the municipality", text: $municipality)
-                          .fixedSize()
-                          .padding(-7)
-                          .padding(.horizontal, 15)
-                    }
-                }
-                
+                InputTextField(heading: "First name",   placeHolder: "Enter the first name",    value: $firstName)
+                InputTextField(heading: "Last name",    placeHolder: "Enter the last name",     value: $lastName)
+                InputTextField(heading: "eMail",        placeHolder: "Enter the email address", value: $personEmail)
+                InputTextField(heading: "Address",      placeHolder: "Enter the address",       value: $address)
+                InputTextField(heading: "Phone Number", placeHolder: "Enter the phone number",  value: $phoneNumber)
+                InputTextField(heading: "City",         placeHolder: "Enter the city",          value: $city)
+                InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
+
                 ZStack {
                     VStack (alignment: .leading) {
                         Text("Date of birth")
@@ -139,5 +70,24 @@ struct ContentView : View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct InputTextField: View {
+   var heading: String
+   var placeHolder: String
+   @Binding var value: String
+
+   var body: some View {
+      ZStack {
+          VStack (alignment: .leading) {
+              Text(heading)
+                 .font(.footnote)
+                 .padding(-5)
+              TextField(placeHolder, text: $value)
+                 .padding(-7)
+                 .padding(.horizontal, 15)
+          }
+       }
     }
 }
