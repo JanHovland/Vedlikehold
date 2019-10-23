@@ -130,7 +130,7 @@ struct ContentView : View {
             }
             .navigationBarTitle(Text("Person opplysninger"), displayMode: .inline)
         }
-        // Removes all separators below
+        // Removes all separators below in the List view
         .listStyle(GroupedListStyle())
          
     }
