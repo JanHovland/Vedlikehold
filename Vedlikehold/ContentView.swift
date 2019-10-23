@@ -116,7 +116,7 @@ struct ContentView : View {
             
                 VStack {
                     HStack {
-                        Text("Gendercccccc")
+                        Text("Gender ")
                         .font(.footnote)
                         .padding(-5)
                         Picker(selection: $gender, label: Text("")) {
