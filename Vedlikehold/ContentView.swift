@@ -29,7 +29,7 @@ struct ContentView : View {
     var dateFormatter: DateFormatter {
         
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .long
         formatter.timeStyle = .none
         
         let region = NSLocale.current.regionCode?.lowercased()
@@ -66,8 +66,6 @@ struct ContentView : View {
                 }
                 
                 InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
-                
-                // InputDate(heading: "Date of birth", placeHolder: "Enter the dateOfBirth", value: $dateOfBirth)
                 
                 DatePicker(selection: $dateOfBirth, in: ...Date(), displayedComponents: .date)
                 {
@@ -109,26 +107,6 @@ struct InputTextField: View {
                 TextField(placeHolder, text: $value)
                     .padding(-7)
                     .padding(.horizontal, 15)
-            }
-        }
-    }
-}
-
-struct InputDate: View {
-    var heading: String
-    var placeHolder: String
-    @Binding var value: String
-    
-    var body: some View {
-        ZStack {
-            VStack (alignment: .leading) {
-                Text(heading)
-                    .font(.footnote)
-                    .padding(-5)
-                TextField(placeHolder, text: $value)
-                    .padding(-7)
-                    .padding(.horizontal, 15)
-                    .keyboardType(.numbersAndPunctuation)
             }
         }
     }
