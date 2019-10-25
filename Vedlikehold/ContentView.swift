@@ -21,14 +21,31 @@ struct ContentView : View {
     @State var phoneNumber: String = ""
     @State var city: String = ""
     @State var municipality: String = ""
-    @State var dateOfBirth: String = ""
+    // @State var dateOfBirth: String = ""
     
     @State var gender = 0
     var genders = ["Man", "Women"]
     
+    var dateFormatter: DateFormatter {
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        
+        let region = NSLocale.current.regionCode?.lowercased()
+        formatter.locale = NSLocale(localeIdentifier: region!) as Locale
+        
+//        let datoString = formatter.string(from: dateOfBirth)
+//        dateOfBirth =  formatter.string(from: dateOfBirth)
+//
+        return formatter
+    }
+
+    @State private var dateOfBirth = Date()
+    
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 
                 InputTextField(heading: "First name",   placeHolder: "Enter the first name",    value: $firstName)
                 InputTextField(heading: "Last name",    placeHolder: "Enter the last name",     value: $lastName)
@@ -50,13 +67,21 @@ struct ContentView : View {
                 
                 InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
                 
-                InputDate(heading: "Date of birth", placeHolder: "Enter the dateOfBirth", value: $dateOfBirth)
+                // InputDate(heading: "Date of birth", placeHolder: "Enter the dateOfBirth", value: $dateOfBirth)
+                
+                DatePicker(selection: $dateOfBirth, in: ...Date(), displayedComponents: .date)
+                {
+                    Text("Date of birth")
+                    .font(.footnote)
+                    .padding(-5)
+                }
                 
                 // Returning an inteher 0 == "Man" 1 == "Women
                 InputGender(heading: "Gender ", genders: genders, value: $gender)
                 
             }
             .navigationBarTitle(Text("Personal information"), displayMode: .inline)
+
         }
             // Removes all separators below in the List view
             .listStyle(GroupedListStyle())
@@ -130,3 +155,16 @@ struct InputGender: View {
         }
     }
 }
+  
+//func changeSwitchPassword(_ sender: UISwitch) {
+//
+//     if switchPassWord.isOn == false {
+//         switchPassWord.isOn = false
+//         UserDefaults.standard.set(false, forKey: "SHOWPASSWORD")
+//     } else {
+//         switchPassWord.isOn = true
+//         UserDefaults.standard.set(true, forKey: "SHOWPASSWORD")
+//     }
+//
+// }
+
