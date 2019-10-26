@@ -26,22 +26,7 @@ struct ContentView : View {
     @State var gender = 0
     var genders = ["Man", "Women"]
     
-    var dateFormatter: DateFormatter {
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        
-        let region = NSLocale.current.regionCode?.lowercased()
-        formatter.locale = NSLocale(localeIdentifier: region!) as Locale
-        
-//        let datoString = formatter.string(from: dateOfBirth)
-//        dateOfBirth =  formatter.string(from: dateOfBirth)
-//
-        return formatter
-    }
-
-    @State private var dateOfBirth = Date()
+    @State var dateOfBirth = Date()
     
     var body: some View {
         NavigationView {
@@ -67,12 +52,16 @@ struct ContentView : View {
                 
                 InputTextField(heading: "Municipality", placeHolder: "Enter the municipality",  value: $municipality)
                 
-                DatePicker(selection: $dateOfBirth, in: ...Date(), displayedComponents: .date)
-                {
-                    Text("Date of birth")
-                    .font(.footnote)
-                    .padding(-5)
-                }
+                DatePicker(
+                    selection: $dateOfBirth,
+                    in: ...Date(),
+                    displayedComponents: [.date],
+                    label: {
+                        Text("Date of birth")
+                            .font(.footnote)
+                            .padding(-5)
+                    }
+                )
                 
                 // Returning an inteher 0 == "Man" 1 == "Women
                 InputGender(heading: "Gender ", genders: genders, value: $gender)
