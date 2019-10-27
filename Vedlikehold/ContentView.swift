@@ -21,7 +21,6 @@ struct ContentView : View {
     @State var phoneNumber: String = ""
     @State var city: String = ""
     @State var municipality: String = ""
-    // @State var dateOfBirth: String = ""
     
     @State var gender = 0
     var genders = ["Man", "Women"]
